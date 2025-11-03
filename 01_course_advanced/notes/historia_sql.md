@@ -1,38 +1,37 @@
-# **História do SQL**
-O SQL (Structured Query Language) é uma linguagem padrão para interação com bancos de dados relacionais. Sua história está profundamente ligada ao desenvolvimento de bancos de dados relacionais e ao avanço das tecnologias de armazenamento e manipulação de dados.
+# **History of SQL**
+SQL (Structured Query Language) is a standard language for interacting with relational databases. Its history is deeply tied to the development of relational databases and the advancement of data storage and manipulation technologies.
 
-## **1. Origem do Conceito Relacional (1970)**
-- O conceito de banco de dados relacional foi introduzido por Edgar F. Codd, um cientista da IBM, em um artigo seminal publicado em 1970 intitulado "A Relational Model of Data for Large Shared Data Banks".
-- Este modelo teórico propôs o uso de tabelas para armazenar dados e definiu as bases para o SQL.
+## **1. Origin of the Relational Concept (1970)**
+- The concept of the relational database was introduced by Edgar F. Codd, an IBM scientist, in a seminal paper published in 1970 titled "A Relational Model of Data for Large Shared Data Banks."
+- This theoretical model proposed the use of tables to store data and defined the foundation for SQL.
 
-## **2. Desenvolvimento Inicial do SQL (1974–1979)**
-- A IBM iniciou a criação de um protótipo de banco de dados relacional chamado System R para demonstrar a viabilidade do modelo relacional.
-- Durante o projeto System R, a linguagem SEQUEL (Structured English Query Language) foi desenvolvida para permitir a interação com os dados armazenados.
-- Posteriormente, o nome foi alterado para SQL, pois "SEQUEL" era uma marca registrada.
+## **2. Initial Development of SQL (1974–1979)**
+- IBM began creating a relational database prototype called System R to demonstrate the viability of the relational model.
+- During the System R project, the language SEQUEL (Structured English Query Language) was developed to allow interaction with the stored data.
+- Subsequently, the name was changed to SQL, as "SEQUEL" was a registered trademark.
 
-## **3. SQL se torna um padrão (1986–1987)**
-Em 1986, o American National 
-- Standards Institute (ANSI) padronizou o SQL, consolidando-o como a linguagem padrão para manipulação de bancos de dados relacionais.
-- Um ano depois, a International Organization for Standardization (ISO) também adotou o SQL como padrão.
+## **3. SQL Becomes a Standard (1986–1987)**
+- In 1986, the American National Standards Institute (ANSI) standardized SQL, consolidating it as the standard language for manipulating relational databases.
+- One year later, the International Organization for Standardization (ISO) also adopted SQL as a standard.
 
-## **4. Popularização do SQL (Década de 1980)**
-- Com o surgimento de sistemas de banco de dados como Oracle Database (1979), IBM Db2 (1983) e Microsoft SQL Server (1989), o SQL ganhou popularidade no mercado comercial.
-- Ele se tornou amplamente adotado devido à sua simplicidade, flexibilidade e poder de manipulação de dados.
+## **4. Popularization of SQL (The 1980s)**
+- With the emergence of database systems like Oracle Database (1979), IBM Db2 (1983), and Microsoft SQL Server (1989), SQL gained popularity in the commercial market.
+- It became widely adopted due to its simplicity, flexibility, and power in data manipulation.
 
-## **5. Avanços e Extensões do SQL (1990–Presente)**
-- O SQL passou por várias revisões e aprimoramentos, como:
-    - **SQL-92:** Introduziu funcionalidades avançadas, como subqueries e novos tipos de dados.
-    - **SQL:1999:** Adicionou suporte a programação orientada a objetos e triggers.
-    - **SQL:2003:** Incluiu XML e funções de janela.
-    - **SQL:2011:** Introduziu suporte a dados temporais.
->Ao longo dos anos, implementações específicas como MySQL, PostgreSQL e SQLite popularizaram ainda mais o SQL, tornando-o essencial para desenvolvedores e administradores de dados.
+## **5. Advancements and Extensions of SQL (1990–Present)**
+- SQL has undergone several revisions and enhancements, such as:
+    - **SQL-92:** Introduced advanced features like subqueries and new data types.
+    - **SQL:1999:** Added support for object-oriented programming and triggers.
+    - **SQL:2003:** Included XML and **Window Functions**.
+    - **SQL:2011:** Introduced support for temporal data.
+>Over the years, specific implementations such as MySQL, PostgreSQL, and SQLite further popularized SQL, making it essential for developers and data administrators.
 
-## **6. SQL Hoje**
-- O SQL é amplamente utilizado em quase todos os sistemas de banco de dados relacionais modernos.
-- Embora o NoSQL tenha ganhado força para certos casos de uso, o SQL continua a ser uma das linguagens mais usadas e relevantes no campo de gerenciamento de dados.
+## **6. SQL Today**
+- SQL is widely used across almost all modern relational database systems.
+- Although NoSQL has gained traction for certain use cases, SQL continues to be one of the most used and relevant languages in the field of data management.
 
-## **Curiosidade**
-O SQL foi projetado para ser próximo à linguagem inglesa, facilitando sua adoção por usuários não técnicos e tornando-o uma das linguagens de consulta mais intuitivas.
+## **Curiosity**
+SQL was designed to closely resemble the English language, facilitating its adoption by non-technical users and making it one of the most intuitive query languages.
 
-## **Conclusão**
-A história do SQL reflete sua evolução de um conceito teórico para uma ferramenta indispensável no mundo dos dados. Ele permanece no coração de muitas tecnologias modernas e continua a evoluir com as demandas do mercado.
+## **Conclusion**
+The history of SQL reflects its evolution from a theoretical concept to an indispensable tool in the world of data. It remains at the heart of many modern technologies and continues to evolve with market demands.
