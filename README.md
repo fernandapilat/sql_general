@@ -1,39 +1,39 @@
-#  SQL Avançado: Estruturas, Consultas e Relatórios  
+# SQL Portfolio
 
-Bem-vindo ao repositório do curso **SQL Avançado**, onde aprofundei meus conhecimentos em SQL e Banco de Dados. Este repositório contém os projetos, relatórios e aprendizados que desenvolvi durante o curso.  
+Welcome to my centralized repository for **SQL** and **Database** studies and projects.
 
----
-
-## 📚 O que aprendi  
-
-Durante o curso, explorei conceitos avançados de SQL, incluindo:  
-- Paginação de dados com **LIMIT**  
-- Filtragem de consultas com **HAVING**  
-- Diferenças entre **LEFT JOIN** e **RIGHT JOIN**  
-- Uso de **Sub-Queries**  
-- Aplicação de **funções do MySQL**  
-- Ordenação de dados com **ORDER BY**  
-- Agrupamento de dados com **GROUP BY**  
-- Criação e uso de **CTEs** (*Common Table Expressions*)  
-- Diferenças entre **CTEs**, **Subconsultas** e **Views**  
+This space documents my learning journey, containing code scripts, reports, and practical exercises developed across various courses and challenges.
 
 ---
 
-## 🛠️ Projetos e Relatórios  
+## Topic and Project Breakdown
 
-No final do curso, desenvolvi relatórios práticos para consolidar meu conhecimento:  
-1. **Relatório de vendas válidas**  
-   - Uma consulta para identificar vendas consideradas válidas.  
-2. **Relatório de vendas por sabor**  
-   - Análise de vendas agrupadas por sabor.  
-3. **Consolidando o conhecimento**  
-   - Uma visão geral das consultas aprendidas.  
+| Level/Project | Main Topic | Functions or Clauses Used |
+| :--- | :--- | :--- |
+| **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY` |
+| **Intermediate** | Data Joins | `LEFT JOIN`, `RIGHT JOIN`, `INNER JOIN` |
+| **Intermediate** | Grouping and Filtering | `GROUP BY`, `HAVING` |
+| **Advanced** | Query Reusability and Modularity | `WITH` (CTEs - Common Table Expressions) |
+| **Advanced** | Nested Queries | `Sub-Queries` |
+| **Advanced** | Query Abstraction | `VIEWS` |
+| **Report 1** | Valid Sales Analysis | *Combination of JOINs and Conditional Logic* |
+| **Report 2** | Flavor Analysis | `GROUP BY`, Aggregate Functions (`SUM`, `COUNT`, etc.) |
+| **[HackerRank](https://www.hackerrank.com/)** | **Challenge Solutions** | - |
 
 ---
 
-## 🖥️ Como visualizar  
+## Structure and How to View
 
-Este repositório contém os scripts SQL utilizados nos relatórios e consultas, bem como exemplos e explicações para cada projeto desenvolvido.  
+The repository is organized into folders by course or project. To explore the queries:
+1.  Navigate to the folder of interest.
+2.  The SQL scripts (`.sql`) contain the query code and database setup.
+3.  Use a compatible MySQL/SQL environment or an online tool like **[SQLite Online](https://sqliteonline.com/)** to execute the scripts.
+
+---
+
+### 🚧 Repository Status
+
+This portfolio is under **continuous development**. New sections and projects will be added as studies progress.
 
 
 
