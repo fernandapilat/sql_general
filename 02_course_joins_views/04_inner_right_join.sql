@@ -11,10 +11,25 @@ FROM clientes c
 INNER JOIN pedidos p 
 ON c.id = p.idcliente;
 
-SELECT c.nome, p.id, p.datahorapedido 
+-- just some columns
+SELECT
+    c.nome,
+    p.id, 
+    p.datahorapedido 
 FROM clientes c 
 INNER JOIN pedidos p 
-ON c.id = p.idcliente;
+ON c.id = p.idcliente
+ORDER BY c.id;
+
+-- if i want to know how much orders per customers
+SELECT
+    c.nome,
+    COUNT(p.id) AS order_qty
+FROM clientes c 
+INNER JOIN pedidos p 
+	ON c.id = p.idcliente
+GROUP BY c.nome
+ORDER BY order_qty DESC;
 
 
 -- RIGHT JOIN
@@ -26,13 +41,34 @@ INSERT INTO Produtos (ID, Nome, Descricao, Preco, Categoria)VALUES
 
 SELECT * FROM itenspedidos;
 
-
-SELECT pr.nome, ip.id, ip.idproduto 
+-- qty products sold
+SELECT 
+	pr.nome,
+    pr.id,
+    COUNT(ip.idpedido) as qty_order
  FROM itenspedidos AS ip
- RIGHT JOIN  Produtos AS pr
- ON pr.id = ip.idproduto;
-
-SELECT pr.nome,  x.idproduto,  x.idpedido 
+ RIGHT JOIN  produtos AS pr
+ 	ON pr.id = ip.idproduto
+ GROUP BY pr.nome, pr.id
+ ORDER BY qty_order;
+ 
+ -- top 5 worst sellers
+ SELECT 
+	pr.nome,
+    pr.id,
+    COUNT(ip.idpedido) as qty_order
+ FROM itenspedidos AS ip
+ RIGHT JOIN  produtos AS pr
+ 	ON pr.id = ip.idproduto
+ GROUP BY pr.nome, pr.id
+ ORDER BY qty_order
+ LIMIT 5;
+ 
+-- searching for products that were not sold in october
+SELECT 
+	pr.nome,  
+    x.idproduto,  
+    x.idpedido 
 FROM(
     SELECT ip.idpedido, ip.idproduto
     FROM pedidos p
@@ -40,7 +76,8 @@ FROM(
     ON p.id = ip.idpedido
     WHERE strftime('%m', p.DataHoraPedido) = '10' ) x
 RIGHT JOIN produtos pr
-ON pr.id =  x.idproduto;
+ON pr.id =  x.idproduto
+WHERE x.idproduto IS NULL;
 
 
 
