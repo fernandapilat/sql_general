@@ -6,18 +6,20 @@ This space documents my learning journey, containing code scripts, reports, and 
 
 ---
 
-## Topic and Project Breakdown
+## 📊 Topic and Project Breakdown
 
 | Level/Project | Main Topic | Functions or Clauses Used |
 | :--- | :--- | :--- |
-| **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY` |
-| **Intermediate** | Data Joins | `LEFT JOIN`, `RIGHT JOIN`, `INNER JOIN` |
-| **Intermediate** | Grouping and Filtering | `GROUP BY`, `HAVING` |
+| **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY`, `INSERT`, **`DELETE`** |
+| **Intermediate** | Data Joins | `LEFT JOIN`, `RIGHT JOIN`, `INNER JOIN`, **`FULL JOIN`** |
+| **Intermediate** | Grouping and Filtering | **`GROUP BY`**, **`COUNT`**, **`SUM`**, `HAVING` |
+| **Intermediate** | **Data Manipulation & Time** | **`DATE()`**, **`strftime()`**, **`ROUND()`** |
 | **Advanced** | Query Reusability and Modularity | `WITH` (CTEs - Common Table Expressions) |
 | **Advanced** | Nested Queries | `Sub-Queries` |
 | **Advanced** | Query Abstraction | `VIEWS` |
+| **Advanced** | **Automation & Integrity** | **`TRIGGERS`** |
 | **Report 1** | Valid Sales Analysis | *Combination of JOINs and Conditional Logic* |
-| **Report 2** | Flavor Analysis | `GROUP BY`, Aggregate Functions (`SUM`, `COUNT`, etc.) |
+| **Report 2** | Flavor Analysis | **Data Aggregation** (`SUM`, `COUNT`, etc.) |
 | **[HackerRank](https://www.hackerrank.com/)** | **Challenge Solutions** | - |
 
 ---
