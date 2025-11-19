@@ -10,16 +10,17 @@ This space documents my learning journey, containing code scripts, reports, and 
 
 | Level/Project | Main Topic | Functions or Clauses Used |
 | :--- | :--- | :--- |
-| **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY`, `INSERT`, **`DELETE`** |
-| **Intermediate** | Data Joins | `LEFT JOIN`, `RIGHT JOIN`, `INNER JOIN`, **`FULL JOIN`** |
-| **Intermediate** | Grouping and Filtering | **`GROUP BY`**, **`COUNT`**, **`SUM`**, `HAVING` |
-| **Intermediate** | **Data Manipulation & Time** | **`DATE()`**, **`strftime()`**, **`ROUND()`** |
+| **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY`, `INSERT`, `DELETE`, **`UPDATE`** |
+| **Intermediate** | Data Joins | `LEFT JOIN`, `RIGHT JOIN`, `INNER JOIN`, `FULL JOIN` |
+| **Intermediate** | Grouping and Filtering | `GROUP BY`, `COUNT`, `SUM`, `HAVING` |
+| **Intermediate** | Data Manipulation & Time | `DATE()`, `strftime()`, `ROUND()` |
+| **Intermediate** | **Transaction Control (TCL)** | **`BEGIN TRANSACTION`**, **`COMMIT`**, **`ROLLBACK`** |
 | **Advanced** | Query Reusability and Modularity | `WITH` (CTEs - Common Table Expressions) |
 | **Advanced** | Nested Queries | `Sub-Queries` |
 | **Advanced** | Query Abstraction | `VIEWS` |
-| **Advanced** | **Automation & Integrity** | **`TRIGGERS`** |
+| **Advanced** | Automation & Integrity | `TRIGGERS`, **`PRAGMA`** (SQLite Specific) |
 | **Report 1** | Valid Sales Analysis | *Combination of JOINs and Conditional Logic* |
-| **Report 2** | Flavor Analysis | **Data Aggregation** (`SUM`, `COUNT`, etc.) |
+| **Report 2** | Flavor Analysis | Data Aggregation (`SUM`, `COUNT`, etc.) |
 | **[HackerRank](https://www.hackerrank.com/)** | **Challenge Solutions** | - |
 
 ---
