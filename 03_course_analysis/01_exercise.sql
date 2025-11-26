@@ -56,3 +56,56 @@ SELECT
     ROUND(MAX(p.preco), 0) AS max_price
 FROM produtos p
 GROUP By p.nome_produto;
+
+-- Query the 'vendas' (sales) table to inspect the structure and initial records
+SELECT * FROM vendas LIMIT 10;
+
+---
+
+-- Determine the distinct years for which we have sales data
+SELECT DISTINCT
+    strftime('%Y', data_venda) AS year -- Function format: strftime(format, datetime_column)
+FROM vendas v
+ORDER BY year;
+
+---
+
+-- Calculate the total number of orders and the total amount sold, grouped by year
+SELECT 
+    strftime('%Y', data_venda) AS year,
+    COUNT(*) AS orders,
+    ROUND(SUM(total_venda), 0) total_sold
+FROM vendas v
+GROUP BY 1;
+
+---
+
+-- Calculate the total number of orders and amount sold, grouped by month (time series analysis)
+SELECT 
+    strftime('%Y-%m', data_venda) AS year_month,
+    COUNT(*) AS orders,
+    ROUND(SUM(total_venda), 0) total_sold
+FROM vendas v
+GROUP BY 1;
+
+---
+
+-- Calculate sales data specifically for November (often associated with Black Friday)
+SELECT 
+    strftime('%Y-%m', data_venda) AS year_month,
+    COUNT(*) AS orders,
+    ROUND(SUM(total_venda), 0) total_sold
+FROM vendas v
+WHERE strftime('%m', data_venda) = '11'
+GROUP BY 1;
+
+---
+
+-- Calculate sales data for the high-volume months: November, December, and January
+SELECT 
+    strftime('%Y-%m', data_venda) AS year_month,
+    COUNT(*) AS orders,
+    ROUND(SUM(total_venda), 0) total_sold
+FROM vendas v
+WHERE strftime('%m', data_venda) IN ('11', '12', '01')
+GROUP BY 1;
