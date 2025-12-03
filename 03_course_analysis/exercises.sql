@@ -109,3 +109,92 @@ SELECT
 FROM vendas v
 WHERE strftime('%m', data_venda) IN ('11', '12', '01')
 GROUP BY 1;
+
+---
+
+-- Identify the top-selling suppliers over time (by month)
+SELECT
+	strftime('%Y-%m', v.data_venda) AS year_month,
+	f.nome AS supplier_name,
+    -- p.nome_produto,
+    COUNT(it.produto_id) AS items_sold_count 
+from itens_venda it
+JOIN produtos p
+	ON it.produto_id = p.id_produto
+JOIN fornecedores f
+	ON p.fornecedor_id = f.id_fornecedor
+JOIN vendas v
+	ON it.venda_id = v.id_venda
+GROUP BY 1, 2
+ORDER BY 2;
+
+-- Analyze best and worst supplier performance during last year's Black Friday (November 2022)
+SELECT
+	strftime('%Y-%m', v.data_venda) AS year_month,
+	f.nome AS supplier_name,
+    -- p.nome_produto,
+    COUNT(it.produto_id) AS items_sold_count
+from itens_venda it
+JOIN produtos p
+	ON it.produto_id = p.id_produto
+JOIN fornecedores f
+	ON p.fornecedor_id = f.id_fornecedor
+JOIN vendas v
+	ON it.venda_id = v.id_venda
+WHERE 
+	strftime('%Y-%m', v.data_venda) = '2022-11' -- Filters for a specific year and month (November 2022)
+GROUP BY year_month, f.nome
+ORDER BY items_sold_count DESC; -- Orders from best (highest sales) to worst
+
+-- Track the historical performance (month-over-month sales) for a specific low-performing supplier
+SELECT
+	strftime('%Y-%m', v.data_venda) AS year_month,
+	-- f.nome, -- Supplier name commented out since the WHERE clause already filters for one specific supplier
+    COUNT(it.produto_id) AS items_sold_count -- Renomeado para clareza
+FROM itens_venda it
+JOIN produtos p
+	ON it.produto_id = p.id_produto
+JOIN fornecedores f
+	ON p.fornecedor_id = f.id_fornecedor
+JOIN vendas v
+	ON it.venda_id = v.id_venda
+WHERE 
+	 f.nome = 'NebulaNetworks' -- Filter to focus on the specific supplier
+GROUP BY year_month -- Grouping only by month since the supplier is fixed
+ORDER BY year_month ASC; -- Order chronologically
+
+---
+
+-- Analyze the performance/representation of categories during the Black Friday month (November)
+SELECT
+	strftime('%Y-%m', v.data_venda) AS year_month,
+	c.nome_categoria AS category_name,
+    COUNT(it.produto_id) AS items_sold_count 
+from itens_venda it
+JOIN produtos p
+	ON it.produto_id = p.id_produto
+JOIN categorias c
+	ON P.categoria_id = c.id_categoria
+JOIN vendas v
+	ON it.venda_id = v.id_venda
+WHERE 
+	strftime('%m', data_venda) = '11' -- Filter for November (Month '11')
+GROUP BY 1, 2
+ORDER BY 2, 1;
+
+-- Identify the categories with the highest and lowest sales volume during last year's Black Friday (November 2022)
+SELECT
+	strftime('%Y-%m', v.data_venda) AS year_month,
+	c.nome_categoria AS category_name,
+    COUNT(it.produto_id) AS items_sold_count
+from itens_venda it
+JOIN produtos p
+	ON it.produto_id = p.id_produto
+JOIN categorias c
+	ON P.categoria_id = c.id_categoria
+JOIN vendas v
+	ON it.venda_id = v.id_venda
+WHERE 
+	strftime('%Y-%m', v.data_venda) = '2022-11' -- Filters for a specific year and month (November 2022)
+GROUP BY year_month, c.nome_categoria
+ORDER BY items_sold_count DESC; -- Orders from highest sales volume to lowest
