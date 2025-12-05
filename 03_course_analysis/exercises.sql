@@ -198,3 +198,47 @@ WHERE
 	strftime('%Y-%m', v.data_venda) = '2022-11' -- Filters for a specific year and month (November 2022)
 GROUP BY year_month, c.nome_categoria
 ORDER BY items_sold_count DESC; -- Orders from highest sales volume to lowest
+
+-- Compare monthly sales volume (items sold) across key suppliers using a pivot structure
+
+WITH suppliers AS (
+    SELECT
+        strftime('%Y-%m', v.data_venda) AS year_month,
+        f.nome AS supplier_name,
+        COUNT(it.produto_id) AS items_sold
+    FROM itens_venda it
+    JOIN produtos p
+        ON it.produto_id = p.id_produto
+    JOIN fornecedores f
+        ON p.fornecedor_id = f.id_fornecedor
+    JOIN vendas v
+        ON it.venda_id = v.id_venda
+    GROUP BY year_month, supplier_name
+    ORDER BY year_month Asc
+)
+SELECT
+    year_month,
+    SUM(CASE WHEN supplier_name = 'NebulaNetworks' THEN items_sold ELSE 0 end) AS sales_NebulaNetworks,
+    SUM(CASE WHEN supplier_name = 'HorizonDistributors' THEN items_sold ELSE 0 END) AS sales_HorizonDistributors,
+    SUM(CASE WHEN supplier_name = 'AstroSupply' THEN items_sold ELSE 0 END) AS sales_AstroSupply
+FROM suppliers
+GROUP BY 1;
+
+-- Calculate the sales percentage contribution of each category (Category Sales / Total Sales)
+-- This query uses a Scalar Subquery and the multiplication by 1.0 to ensure float division.
+SELECT
+	c.nome_categoria AS category_name,
+	COUNT(it.produto_id) AS items_sold,
+    -- Calculation: (Category Sales / Total Global Sales) * 100
+    ROUND((COUNT(it.produto_id) / (SELECT count(*) * 1.0 as rows from itens_venda) * 100), 2) AS perc_sold,
+	-- Add string "%"
+	ROUND((COUNT(it.produto_id) / (SELECT count(*) * 1.0 as rows from itens_venda) * 100), 2) || '%'  AS perc_sold
+FROM itens_venda it
+JOIN produtos p
+	ON it.produto_id = p.id_produto
+JOIN categorias c
+	ON P.categoria_id = c.id_categoria
+JOIN vendas v
+	ON it.venda_id = v.id_venda
+GROUP BY c.nome_categoria
+ORDER BY items_sold DESC;
