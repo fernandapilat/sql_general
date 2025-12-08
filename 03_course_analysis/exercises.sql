@@ -242,3 +242,50 @@ JOIN vendas v
 	ON it.venda_id = v.id_venda
 GROUP BY c.nome_categoria
 ORDER BY items_sold DESC;
+
+-- Analyze the monthly sales seasonality over the last four years (2020-2023).
+-- This is achieved by pivoting the data using SUM(CASE WHEN...).
+
+SELECT
+	strftime('%m', v.data_venda) AS month, -- Extracts the month (01 to 12) for grouping
+    SUM(CASE WHEN strftime('%Y', v.data_venda) = '2020' THEN 1 ELSE 0 end) AS "2020",
+    SUM(CASE WHEN strftime('%Y', v.data_venda) = '2021' THEN 1 ELSE 0 end) AS "2021",
+    SUM(CASE WHEN strftime('%Y', v.data_venda) = '2022' THEN 1 ELSE 0 end) AS "2022",
+    SUM(CASE WHEN strftime('%Y', v.data_venda) = '2023' THEN 1 ELSE 0 end) AS "2023"
+FROM vendas v
+GROUP BY 1
+ORDER BY 1;
+
+-- Calculate the percentage difference between the average historical Black Friday sales
+-- (excluding 2022) and the actual Black Friday sales performance in 2022.
+
+WITH avg_sales AS (
+    -- CTE 1: Calculates the average sales volume for November across all years, excluding 2022.
+    SELECT
+        AVG(sales) AS avg_historical_sales
+    FROM (
+        SELECT strftime('%Y', v.data_venda) AS year, COUNT(*) AS sales
+        FROM vendas v
+        -- Filter for November (month '11') and exclude the current comparison year (2022)
+        WHERE strftime('%m', v.data_venda) = '11' AND strftime('%Y', v.data_venda) != '2022'
+        GROUP BY 1
+    )
+), 
+act_sales AS (
+    -- CTE 2: Captures the actual sales volume for the target comparison year (November 2022).
+    SELECT
+        sales AS actual_2022_sales
+    FROM (
+        SELECT strftime('%Y', v.data_venda) AS year, COUNT(*) AS sales
+        FROM vendas v
+        -- Filter specifically for November 2022
+        WHERE strftime('%m', v.data_venda) = '11' AND strftime('%Y', v.data_venda) = '2022'
+        GROUP BY 1
+    )
+)
+SELECT
+    avg_va.avg_historical_sales,
+    va.actual_2022_sales,
+    -- Calculation: ((Actual - Average) / Average) * 100 to find the percentage variance.
+    ROUND(((va.actual_2022_sales - avg_va.avg_historical_sales) / avg_va.avg_historical_sales * 100), 2) AS percentage_variance
+FROM avg_sales avg_va, act_sales va;
