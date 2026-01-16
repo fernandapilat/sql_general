@@ -142,3 +142,29 @@ ORDER BY age_rank, name;
 
 --------------------------------------------------------------------------------
 
+-- 8. PERCENT_RANK (Positioning in the Ranking)
+-- Logic: Calculates the relative rank of a row as a percentage (0 to 100).
+SELECT
+  name,
+  weight,
+  ROUND(PERCENT_RANK() OVER (ORDER BY weight) * 100, 2) AS percent
+FROM cats;
+
+--------------------------------------------------------------------------------
+
+-- 9. CUME_DIST with CAST
+-- Using CAST(... AS integer) to convert the decimal result into a whole number.
+-- This is useful when we don't need the precision of decimals and want a cleaner output.
+SELECT
+  name,
+  weight,
+  CAST(CUME_DIST() OVER (ORDER BY weight) * 100 AS integer) AS percent
+FROM cats;
+
+--------------------------------------------------------------------------------
+
+/* THE GOLDEN RATIONALE:
+   Every Window Function requires the OVER() clause.
+   The OVER() clause is what tells SQL to perform calculations 'row by row',
+   creating new columns while preserving the original detail of each record.
+*/
