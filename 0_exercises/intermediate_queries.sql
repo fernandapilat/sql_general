@@ -168,3 +168,61 @@ FROM cats;
    The OVER() clause is what tells SQL to perform calculations 'row by row',
    creating new columns while preserving the original detail of each record.
 */
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- 10. DATA SEGMENTATION (QUARTILES)
+-- Logic: Assigns each cat to a quartile (1 to 4) based on their weight.
+-- Use Case: Segmenting a population into four equal groups for analysis.
+SELECT
+  name,
+  weight,
+  NTILE(4) OVER (ORDER BY weight) AS weight_quartile
+FROM cats;
+
+--------------------------------------------------------------------------------
+-- 11. HANDLING NULLS IN NAVIGATION (LAG + COALESCE)
+-- The Problem: The first row always returns NULL because there is no previous row.
+-- The Solution: COALESCE(value, 0) converts that NULL into a 0 for cleaner reporting.
+SELECT
+  name,
+  weight,
+  COALESCE(weight - LAG(weight) OVER (ORDER BY weight), 0) AS weight_to_lose
+FROM cats;
+
+--------------------------------------------------------------------------------
+-- 12. INTERNAL vs EXTERNAL ORDERING
+-- result by 'breed' as well to keep groups together.
+SELECT
+  name,
+  breed,
+  weight,
+  COALESCE(weight - LAG(weight) OVER (PARTITION BY breed ORDER BY weight), 0) AS weight_to_lose
+FROM cats
+ORDER BY breed, weight;
+
+--------------------------------------------------------------------------------
+-- WINDOW FUNCTION SYNTAX FORMULA
+-- Rationale: Action + Window (OVER) + (Grouping PARTITION BY + Sorting ORDER BY)
+--------------------------------------------------------------------------------
+-- Structure:
+-- SELECT 
+--    column,
+--    FUNCTION() OVER (
+--        PARTITION BY category_column
+--        ORDER BY sort_column
+--    ) AS alias_name
+-- FROM table_name;
+
+
+--------------------------------------------------------------------------------
+-- 13. COLOR-BASED BENCHMARKING (FIRST_VALUE + PARTITION BY)
+-- Logic: Within each color group, find the weight of the lightest cat.
+SELECT
+  name,
+  color,
+  weight, -- added weight here just for better comparison!
+  FIRST_VALUE(weight) OVER (PARTITION BY color ORDER BY weight) AS lowest_weight_by_color
+FROM cats
+ORDER BY color, name;
