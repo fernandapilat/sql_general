@@ -222,7 +222,64 @@ ORDER BY breed, weight;
 SELECT
   name,
   color,
-  weight, -- added weight here just for better comparison!
+  weight,
   FIRST_VALUE(weight) OVER (PARTITION BY color ORDER BY weight) AS lowest_weight_by_color
 FROM cats
 ORDER BY color, name;
+
+--------------------------------------------------------------------------------
+-- 14. PARTITIONED LEAD WITH TYPE CASTING
+-- Logic: Finding the next heaviest cat WITHIN the same breed.
+-- Technical Note: Using CAST to VARCHAR because 'COALESCE' requires 
+SELECT
+  name,
+  weight,
+  breed,
+  COALESCE(
+    CAST(LEAD(weight) OVER(PARTITION BY breed ORDER BY weight) AS VARCHAR), 
+    'fattest cat'
+  ) AS next_heaviest
+FROM cats
+ORDER BY weight; -- Global sort for presentation purposes.
+
+--------------------------------------------------------------------------------
+-- 15. CONDITIONAL LOGIC USING WINDOW FUNCTIONS (COALESCE + NTH_VALUE)
+-- Logic: Assigns the 4th lightest cat's weight to everyone as a "standard".
+SELECT
+  name,
+  weight,
+  breed,
+  COALESCE(
+    CAST(NTH_VALUE(weight, 4) OVER (ORDER BY weight) AS VARCHAR), 
+    '99.9'
+  ) AS imagined_weight
+FROM cats;
+
+-- Another way how to calculate
+SELECT
+  name,
+  weight,
+  CASE 
+    WHEN ROW_NUMBER() OVER (ORDER BY weight) <= 3 THEN 99.9
+    ELSE NTH_VALUE(weight, 4) OVER (ORDER BY weight 
+                                    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)
+  END AS imagined_weight
+FROM cats;
+
+--------------------------------------------------------------------------------
+-- 16. AGGREGATING ANALYTICAL RESULTS (DISTINCT + NTH_VALUE)
+-- Logic: Finding the 2nd lightest cat per breed and collapsing the results.
+-- Technical Note: The 'ROWS BETWEEN' clause is essential here to ensure 
+-- NTH_VALUE sees the entire partition regardless of the current row position.
+-- Without it, the first row of each partition would return NULL for the 2nd value.
+SELECT DISTINCT
+  breed,
+  NTH_VALUE(weight, 2) OVER (
+    PARTITION BY breed 
+    ORDER BY weight
+    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+  ) AS second_lightest_weight
+FROM cats
+ORDER BY breed;
+
+--------------------------------------------------------------------------------
