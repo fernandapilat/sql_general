@@ -13,18 +13,23 @@ This space documents my learning journey, containing code scripts, reports, and 
 | **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY`, `INSERT`, `DELETE`, `UPDATE` |
 | **Intermediate** | Data Joins | `LEFT JOIN`, `INNER JOIN`, `COALESCE` |
 | **Intermediate** | Grouping and Filtering | `GROUP BY`, `COUNT`, `SUM`, `HAVING` |
-| **Intermediate** | Data Manipulation & Time | `DATE()`, `strftime()`, `ROUND()` |
+| **Intermediate** | Data Manipulation & Time | `DATE()`, `STRFTIME()`, `ROUND()` |
 | **Intermediate** | **Transaction Control (TCL)** | `BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK` |
 | **Advanced** | Query Reusability and Modularity | `WITH` (CTEs) |
 | **Advanced** | Nested Queries | `Sub-Queries` (Scalar and Correlated) |
 | **Advanced** | Query Abstraction | `VIEWS` |
-| **Advanced** | **Analytical Techniques** | **`CASE WHEN`**, **Pivoting**, **Historical Variance** |
+| **Advanced** | **Analytical Techniques** | `CASE WHEN`, `FILTER (WHERE...)`, **Pivoting**, **Historical Variance** |
+| **Advanced** | **Analytical Window Functions** | `OVER`, `PARTITION BY`, `RANK`, `ROW_NUMBER`, `NTILE` |
+| **Advanced** | **Navigational & Value Functions** | `LAG`, `LEAD`, `NTH_VALUE`, `ARRAY_AGG` |
+| **Advanced** | **Window Framing & Optimization** | `ROWS BETWEEN`, `WINDOW` (Named Windows) |
 | **Advanced** | Automation & Integrity | `TRIGGERS`, `PRAGMA` (SQLite Specific) |
 | **Report 1** | Valid Sales Analysis | *Combination of JOINs and Conditional Logic* |
 | **Report 2** | Flavor Analysis | Data Aggregation (`SUM`, `COUNT`, etc.) |
 | **Report 3 (BF)** | **Black Friday Performance** | **Time-series, YoY Growth, and Supplier Benchmarking** |
+| **Report 4** | **Feline Analytics (Study)** | **Complex Windows, Filtered Aggregates, and Array Aggregation** |
 | **Resources** | **Book** | **[SQL for Data Analysis](https://books.google.fr/books?id=pjhCEAAAQBAJ)** |
 | **[HackerRank](https://www.hackerrank.com/)** | **Challenge Solutions** | - |
+| **[Windows Functions](https://www.windowfunctions.com/questions/intro/0)** | **Challenge Solutions** | - |
 
 ---
 
