@@ -269,7 +269,7 @@ FROM cats;
 --------------------------------------------------------------------------------
 -- 16. AGGREGATING ANALYTICAL RESULTS (DISTINCT + NTH_VALUE)
 -- Logic: Finding the 2nd lightest cat per breed and collapsing the results.
--- Technical Note: The 'ROWS BETWEEN' clause is essential here to ensure 
+-- The 'ROWS BETWEEN' clause is essential here to ensure 
 -- NTH_VALUE sees the entire partition regardless of the current row position.
 -- Without it, the first row of each partition would return NULL for the 2nd value.
 SELECT DISTINCT
@@ -283,3 +283,45 @@ FROM cats
 ORDER BY breed;
 
 --------------------------------------------------------------------------------
+-- 17. DATA DISTRIBUTION USING NTILE AND NAMED WINDOWS
+-- Logic: Dividing the feline population into halves, thirds, and quartiles 
+-- based on their weight to analyze mass distribution.
+-- Technical Highlight: Using the 'WINDOW' clause to define a named window 'w'. 
+--------------------------------------------------------------------------------
+SELECT
+  name,
+  weight,
+  NTILE(2) OVER w AS by_half,
+  NTILE(3) OVER w AS thirds,
+  NTILE(4) OVER w AS quartile
+FROM cats
+WINDOW w AS (ORDER BY weight)
+ORDER BY weight;
+
+--------------------------------------------------------------------------------
+-- 18. ADVANCED AGGREGATION WITH CONDITIONALS (FILTER CLAUSE)
+--  Using the FILTER (WHERE ...) clause attached to 
+-- aggregate functions. This is a more performant and readable alternative 
+-- to using CASE WHEN inside AVG() or creating complex subqueries.
+SELECT
+  breed,
+  AVG(weight) AS average_weight,
+  AVG(weight) FILTER (WHERE age > 1) AS average_old_weight
+FROM cats
+GROUP BY breed
+ORDER BY breed;
+
+--------------------------------------------------------------------------------
+-- 19. MASTERING MODERN AGGREGATION: FILTER & ARRAY_AGG
+-- 1. FILTER: Efficiently handles conditional averages without CASE WHEN hacks.
+-- 2. ARRAY_AGG: Collects all entity names into a single array field per group,
+--    perfect for data denormalization and JSON preparation.
+--------------------------------------------------------------------------------
+SELECT
+  breed,
+  AVG(weight) AS average_weight,
+  AVG(weight) FILTER (WHERE age > 1) AS average_old_weight,
+  ARRAY_AGG(name) AS cat_list
+FROM cats
+GROUP BY breed
+ORDER BY breed;
