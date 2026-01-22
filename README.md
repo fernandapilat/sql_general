@@ -1,50 +1,45 @@
-# SQL Portfolio
+# SQL Learning
 
-Welcome to my centralized repository for **SQL** and **Database** studies and projects.
+This repository serves as a comprehensive technical portfolio documenting my progression in SQL, ranging from foundational logic to complex data analysis and structural database modeling.
 
-This space documents my learning journey, containing code scripts, reports, and practical exercises developed across various courses and challenges.
+## Project Structure
 
----
+The repository is organized into five specialized modules, designed to showcase different levels of database mastery:
 
-## 📊 Topic and Project Breakdown
+| Directory | Level | Focus | Key Topics |
+| :--- | :--- | :--- | :--- |
+| **0_exercises** | Practice | Problem Solving | HackerRank Challenges & Window Functions |
+| **01_course_intermediate** | Intermediate | Practical SQL | Conditional Logic, Aggregations & Reports |
+| **02_course_advanced** | Advanced | Database Integrity | Complex Joins, Views & ACID Transactions |
+| **03_course_data_analysis** | Specialized | Business Intelligence | Time Series, Seasonality & Sales Trends |
+| **04_course_data_modeling** | Specialized | Architecture | Database Design & Structural Relationships |
 
-| Level/Project | Main Topic | Functions or Clauses Used |
-| :--- | :--- | :--- |
-| **Basic** | Data Manipulation and Ordering | `SELECT`, `FROM`, `ORDER BY`, `INSERT`, `DELETE`, `UPDATE` |
-| **Intermediate** | Data Joins | `LEFT JOIN`, `INNER JOIN`, `COALESCE` |
-| **Intermediate** | Grouping and Filtering | `GROUP BY`, `COUNT`, `SUM`, `HAVING` |
-| **Intermediate** | Data Manipulation & Time | `DATE()`, `STRFTIME()`, `ROUND()` |
-| **Intermediate** | **Transaction Control (TCL)** | `BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK` |
-| **Advanced** | Query Reusability and Modularity | `WITH` (CTEs) |
-| **Advanced** | Nested Queries | `Sub-Queries` (Scalar and Correlated) |
-| **Advanced** | Query Abstraction | `VIEWS` |
-| **Advanced** | **Analytical Techniques** | `CASE WHEN`, `FILTER (WHERE...)`, **Pivoting**, **Historical Variance** |
-| **Advanced** | **Analytical Window Functions** | `OVER`, `PARTITION BY`, `RANK`, `ROW_NUMBER`, `NTILE` |
-| **Advanced** | **Navigational & Value Functions** | `LAG`, `LEAD`, `NTH_VALUE`, `ARRAY_AGG` |
-| **Advanced** | **Window Framing & Optimization** | `ROWS BETWEEN`, `WINDOW` (Named Windows) |
-| **Advanced** | Automation & Integrity | `TRIGGERS`, `PRAGMA` (SQLite Specific) |
-| **Report 1** | Valid Sales Analysis | *Combination of JOINs and Conditional Logic* |
-| **Report 2** | Flavor Analysis | Data Aggregation (`SUM`, `COUNT`, etc.) |
-| **Report 3 (BF)** | **Black Friday Performance** | **Time-series, YoY Growth, and Supplier Benchmarking** |
-| **Report 4** | **Feline Analytics (Study)** | **Complex Windows, Filtered Aggregates, and Array Aggregation** |
-| **Resources** | **Book** | **[SQL for Data Analysis](https://books.google.fr/books?id=pjhCEAAAQBAJ)** |
-| **[HackerRank](https://www.hackerrank.com/)** | **Challenge Solutions** | - |
-| **[Windows Functions](https://www.windowfunctions.com/questions/intro/0)** | **Challenge Solutions** | - |
+## Technical Competencies
 
----
+### 1. Advanced Analytical SQL
+* Mastery of **Window Functions** (`RANK`, `LEAD/LAG`, `OVER`) for row-by-row analytical calculations.
+* Complex data manipulation using **CTEs** (Common Table Expressions) and **Subqueries**.
+* Data pivoting and segmentation using conditional logic (`CASE WHEN`).
 
-## Structure and How to View
+### 2. Database Objects & Integrity
+* Implementation of **Views** for query simplification and **Triggers** for automation.
+* Management of **ACID Transactions** to ensure data consistency and reliability.
+* Structural definition using **DDL** (Data Definition Language).
 
-The repository is organized into folders by course or project. To explore the queries:
-1.  Navigate to the folder of interest.
-2.  The SQL scripts (`.sql`) contain the query code and database setup.
-3.  Use a compatible MySQL/SQL environment or an online tool like **[SQLite Online](https://sqliteonline.com/)** to execute the scripts.
+### 3. Business Insights & Analysis
+* Development of **Business Reports** focusing on performance metrics (KPIs).
+* **Seasonality Analysis** (e.g., Black Friday trends) and historical variance calculations.
+* **Descriptive Statistics** applied to sales and academic datasets.
+
+### 4. Data Modeling (In Progress/New)
+* Focus on designing scalable database structures and understanding entity relationships.
+
+## Technologies
+* **Engines**: MySQL, SQLite e Snowflake.
+* **Methodologies**: Relational Modeling, Set Theory, Time Series Analysis.
 
 ---
-
-### 🚧 Repository Status
-
-This portfolio is under **continuous development**. New sections and projects will be added as studies progress.
+*Maintained by Fernanda Pilat*
 
 
 
