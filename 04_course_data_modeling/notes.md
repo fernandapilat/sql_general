@@ -79,3 +79,30 @@ In data modeling, we transition from abstract concepts to physical implementatio
 | Identifier | Primary Key (PK) |
 | Instance | Row / Record |
 
+## 5. Relationships and Degrees
+Relationships are the logical connections between entities, representing how they interact within the business process.
+
+### 5.1 Relationship Degrees
+The degree represents the number of entities involved in a single relationship:
+
+* **Unary (Recursive):** When an entity relates to itself. 
+    * *Example:* An **Employee** manages another **Employee**.
+* **Binary:** The most common type, involving two entities. 
+    * *Example:* A **Customer** requests a **Loan**.
+* **Ternary:** Involves three entities simultaneously. 
+    * *Example:* A **Sales Rep** sells a **Loan Product** to a **Customer**.
+
+### 5.2 Cardinality
+Defines the numerical constraints of the relationship (how many instances on one side connect to the other):
+
+* **One-to-One (1:1):** One record relates to exactly one other record.
+* **One-to-Many (1:N):** One record can relate to multiple records on the other side.
+* **Many-to-Many (N:N):** Multiple records on both sides can be interconnected.
+
+### 5.3 Relationship Verbs (Semantic Mapping)
+Choosing the right verb is essential for "reading" the diagram. Based on our financial model:
+
+* **Sales Reps -> [Manage] -> Customer:** Specific staff responsible for client accounts.
+* **Customer -> [Holds] -> Bank Account:** The client is the legal owner of the account.
+* **Customer -> [Requests] -> Loan:** The process of applying for credit.
+* **Loan -> [Generates] -> Payments:** The debt structure that creates installments.
