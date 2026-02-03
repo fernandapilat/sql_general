@@ -106,3 +106,17 @@ Choosing the right verb is essential for "reading" the diagram. Based on our fin
 * **Customer -> [Holds] -> Bank Account:** The client is the legal owner of the account.
 * **Customer -> [Requests] -> Loan:** The process of applying for credit.
 * **Loan -> [Generates] -> Payments:** The debt structure that creates installments.
+
+> **⚠️ Relationship Constraint:**
+> * **Restriction:** The direct relationship **[Entity A] -[Belongs to]-> [Entity B]** is prohibited because it creates data redundancy, as the association is already established through **[Other Entity]**.
+
+### 5.4 Associative Entities
+An **Associative Entity** is a relationship that the modeler chooses to treat as an entity. It is primarily used to resolve **Many-to-Many (N:N)** relationships.
+
+* **Purpose:** It "breaks" a many-to-many link into two one-to-many (1:N) relationships, allowing the system to store specific data about the interaction itself.
+* **Attributes:** Unlike a simple relationship, an associative entity can have its own attributes (e.g., date, status, or a specific ID).
+* **Visual Representation:** In a Crow's Foot or Chen diagram, it is often shown as a diamond inside a rectangle.
+
+**Practical Example in Flexempresta:**
+If we have many **Employees** participating in many **Training** sessions, we create an associative entity called **Enrollment**.
+* **Why?** Because the "Date of Completion" or "Grade" doesn't belong to the Employee or the Training alone, but to the *connection* between them.
