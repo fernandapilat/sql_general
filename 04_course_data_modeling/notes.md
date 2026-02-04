@@ -120,3 +120,44 @@ An **Associative Entity** is a relationship that the modeler chooses to treat as
 **Practical Example in Flexempresta:**
 If we have many **Employees** participating in many **Training** sessions, we create an associative entity called **Enrollment**.
 * **Why?** Because the "Date of Completion" or "Grade" doesn't belong to the Employee or the Training alone, but to the *connection* between them.
+
+## 6. Attributes (Conceptual Level)
+Attributes are the properties or characteristics that describe an Entity. In a database, these will eventually become the **columns** of your tables.
+
+### 6.1 Classification of Attributes
+Understanding how to categorize data is crucial for system performance and data integrity:
+
+* **Simple (Atomic):** Data that cannot be divided into smaller meaningful parts (e.g., `salary`, `email`).
+* **Composite:** Attributes that can be subdivided into smaller parts (e.g., `Address` can be broken into `Street`, `City`, and `Zip Code`).
+* **Single-valued:** Holds only one value for a specific instance (e.g., `birth_date`).
+* **Multi-valued:** Can hold multiple values for a single record (e.g., `phone` numbers for a customer). These are represented with a **double-line ellipse**.
+* **Derived:** Values calculated from other attributes (e.g., `age` calculated from `birth_date`). These are represented with a **dashed-line ellipse**.
+
+### 6.2 Identifiers (Key Attributes)
+Every entity must have at least one attribute that uniquely identifies each record, ensuring no two rows are identical.
+* **Natural Key:** A real-world identifier used by the business (e.g., `tax_id` / `CPF`).
+* **Surrogate Key:** A system-generated ID used for internal database control (e.g., `id`).
+
+---
+
+### 6.3 Advanced Attributes: Multivalued Composite
+In the Flexempresta project, we encounter cases where an attribute is both composite and multivalued. 
+
+**Example: Address**
+* **Why Multivalued?** A customer may have multiple addresses (e.g., Residential and Billing).
+* **Why Composite?** Each address consists of multiple parts that need to be stored separately for logistics and filtering.
+
+**Mapped Sub-attributes for Address:**
+1. `street`
+2. `number`
+3. `zip_code`
+4. `city`
+5. `state`
+
+### 6.4 Key Attribute (Identifier)
+The Key Attribute is the unique identifier of an entity. Its primary function is to distinguish one record from another within the same entity set.
+
+* **Visual Representation:** In ER diagrams, the name of the key attribute is **underlined**.
+* **Flexempresta Examples:** `tax_id` for Employees, `account_number` for Bank Accounts, and `id` for Customers.
+
+![alt text](<Data Model Conceptual.png>)
