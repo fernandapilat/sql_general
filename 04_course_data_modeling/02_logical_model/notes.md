@@ -1,6 +1,10 @@
 # Logical Modeling
 
 ## 1. What is a Logical Model?
+
+> "The logical model describes, in format, the structures that will be in the database according to the possibilities permitted by its approach, but without yet considering any specific characteristics of a Database Management System (DBMS)."
+> — **Machado, Felipe Nery Rodrigues (Database - Design and Implementation)**
+
 The logical model is a structured representation of how data will be organized in a database. It serves as an intermediary between the abstract business needs (Conceptual Model) and the technical implementation (Physical Model).
 
 * **Entities:** Represent real-world objects or concepts (e.g., Book, User) that become **Tables**.
@@ -33,3 +37,18 @@ Using specific identifiers prevents ambiguity when tables are joined:
 * **SQL Clarity:** Instant recognition of which entity a column belongs to.
 * **Error Prevention:** Reduces risks during data updates or deletions.
 * **Self-Documenting:** The database structure becomes easier for the team to understand.
+
+## 4. The Data Dictionary: Ensuring Model Clarity
+As the logical model grows, maintaining a unified understanding of every element becomes critical. A **Data Dictionary** acts as the "source of truth" for the entire team.
+
+### 4.1 What is a Data Dictionary?
+It is a centralized reference document that provides detailed descriptions of every entity, attribute, and constraint in the database. It defines not just *what* the data is, but *how* it should be interpreted and used.
+
+### 4.2 Why it Matters
+* **Consistency & Clarity:** Eliminates ambiguity by ensuring developers and analysts share the same definition for every field.
+* **Efficient Maintenance:** Speeds up the onboarding of new team members and simplifies future system updates.
+* **Standardization:** Ensures all elements strictly follow established naming conventions and professional standards.
+* **Decision Support:** Provides a clear overview of the data architecture, helping stakeholders make informed decisions about system expansions.
+* **Centralized Reference:** Prevents information silos by keeping all metadata in one accessible location.
+
+> **Pro-Tip:** A well-documented data dictionary mitigates interpretation errors and ensures the long-term robustness of the **Flexempresta** project.

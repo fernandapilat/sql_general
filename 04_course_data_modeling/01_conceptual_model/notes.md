@@ -1,4 +1,7 @@
-# Study Notes - Project Flexempresta
+# Conceitual Model
+
+> "The goal of the conceptual model is to describe, in a simple and easily understood way for the end user, the business context information that must be stored in a database."
+> — **Machado, Felipe Nery Rodrigues (Database - Design and Implementation)**
 
 ## 1. Introduction: The Importance of Data Modeling
 Data modeling is a fundamental technique used to design, maintain, and utilize databases effectively. It ensures that the information system supports business goals through a structured architecture.
