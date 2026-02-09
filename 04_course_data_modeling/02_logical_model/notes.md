@@ -52,3 +52,23 @@ It is a centralized reference document that provides detailed descriptions of ev
 * **Centralized Reference:** Prevents information silos by keeping all metadata in one accessible location.
 
 > **Pro-Tip:** A well-documented data dictionary mitigates interpretation errors and ensures the long-term robustness of the **Flexempresta** project.
+
+## 5. Primary Keys (PK): The Foundation of Identity
+
+A **Primary Key (PK)** is a special relational database column (or a group of columns) designated to uniquely identify each record in a table. According to Machado's principles, a well-defined PK is the first step toward data integrity.
+
+### 5.1 Key Characteristics
+* **Uniqueness:** No two rows can have the same Primary Key value.
+* **Non-Nullability:** A PK field can never be empty (null).
+* **Immutability:** Ideally, the value of a PK should not change over time.
+
+### 5.2 My Implementation: Surrogate Keys
+In the **Flexempresta** project, I am using **UniqueID** as the Primary Key for all main entities, such as `TableCustomers` and `TableEmployees`. This approach, known as a *Surrogate Key*, ensures that the identity of the data is independent of business values (like CPFs or Emails) that might change.
+
+### 5.3 Connecting the Dots: PK and FK Relationship
+The Primary Key is what makes relationships possible. For instance:
+* The `UniqueID` in **TableCustomers** acts as the PK.
+* This same ID is stored in **TableLoan** as a **Foreign Key (FK)** (`id_customer`) to link the loan to the specific user.
+
+---
+> "Without a solid Primary Key, a database is just a collection of disconnected data. The PK is the anchor of the entire relational structure."
