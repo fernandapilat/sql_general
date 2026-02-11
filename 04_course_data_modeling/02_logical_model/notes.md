@@ -60,4 +60,4 @@ As the model grows, the **Data Dictionary** prevents the validation from becomin
 
 > **Pro-Tip:** A well-documented model in Power BI, supported by a clear Data Dictionary, ensures the long-term robustness of the **Flexempresta** project.
 
-![alt text](<Captura de tela 2026-02-11 184845.png>)
+![alt text](<Data Logical Model - PBI.png>)
