@@ -219,3 +219,22 @@ To fix the MVD, we isolate the two independent relationships (Collaborator-Proje
 1.  **Elimination of MVD:** In the 0NF table, if João Silva had 3 projects and 3 dependents, we would need **9 rows** (3x3). In this 4NF version, he only occupies **3 rows** in `Colab_Proj` and **2 rows** in `Dependents`.
 2.  **Removal of the "Fake ID":** The original row ID (001-006) was discarded because it forced a physical tie between independent facts.
 3.  **Referential Integrity:** Using `CollaboratorID` as a Foreign Key (FK) ensures
+
+---
+
+## 9. Fifth Normal Form (5NF) - Join Dependency
+
+**Simplified Goal:** To handle complex relationships involving three or more entities that are all interconnected.
+
+**The Rule:** A table is in 5NF when it can be decomposed into smaller tables that, when joined back together, recreate the original data perfectly, without redundancy.
+
+**Example (The Triangle Rule):**
+Instead of one big table for `Salesperson`, `Product`, and `Region`, we create three:
+1. Salesperson + Product
+2. Salesperson + Region
+3. Product + Region
+
+**Why?** This prevents us from assigning a salesperson to sell a product in a region where that product isn't even available. It's about protecting the "business logic" across multiple connections.
+
+---
+
