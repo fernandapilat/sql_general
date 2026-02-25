@@ -238,3 +238,81 @@ Instead of one big table for `Salesperson`, `Product`, and `Region`, we create t
 
 ---
 
+## 10. Relational Algebra: The Foundation of SQL
+
+> **Reference:** Based on the article "Álgebra Relacional: consulta de dados relacionais" by Ana Duarte (Alura, 05/06/2024) and exploratory practices using the RelaX simulator.
+
+### 10.1. Why Study the Theory?
+* **Foundation:** SQL is the practical implementation, but Relational Algebra (proposed by E.F. Codd in 1970) is the mathematical logic behind it.
+* **Innovation Capacity:** Understanding the basics allows you to create custom solutions where automated tools might fail.
+* **Optimization:** Grasping the "Query Tree" helps visualize how the DBMS processes data, enabling you to write more performant queries.
+
+### 10.2. Technical Glossary
+To master database literature, it is essential to translate everyday concepts into academic rigor:
+* **Relation** = Table
+* **Tuple** = Row (Record)
+* **Attribute** = Column
+
+### 10.3. Fundamental Operations
+
+#### A. Selection ($\sigma$)
+* **Goal:** Filter **rows** (tuples) based on a specific condition.
+* **Example (Buscante E-commerce):** Books priced between 30 and 50.
+    * $\sigma_{price \geq 30 \land price \leq 50} (Books)$
+
+#### B. Projection ($\pi$)
+* **Goal:** Select specific **columns** (attributes) from a relation.
+* **Usage:** Cleaning the output to display only necessary fields (e.g., title and price).
+
+#### C. Natural Join ($\Join$)
+* **Goal:** Combine two tables based on a common attribute.
+* **Practical Insight:** In an **Inner Join**, records without a match in the opposing table are discarded (e.g., the drop from 100 to 89 records when IDs don't match).
+
+#### D. Cartesian Product ($\times$)
+* **Goal:** Combine every row from one table with every row from another.
+* **Usage:** Generating all possible combinations (e.g., matching every customer with every book in the catalog).
+
+### 10.4. Data Behavior (Practical Insights)
+
+#### The "Lost Record" Phenomenon
+When performing a simple `JOIN`, the data volume might decrease unexpectedly.
+* **Cause:** Records in "Table A" that do not have a corresponding Foreign Key in "Table B" (orphaned data).
+
+#### LEFT JOIN Expansion and the NULL Value
+* **Preservation:** The Left Join ensures that no data from the left-side table is lost.
+* **The Void (NULL):** When a record is preserved but finds no match, the system fills the right-side attributes with `NULL`.
+* **Utility:** Essential for identifying "gaps" (e.g., identifying customers who have never made a purchase).
+
+### 10.5. Comparative Table: SQL vs. Relational Algebra
+
+| SQL | Relational Algebra |
+| :--- | :--- |
+| `SELECT` | Projection ($\pi$) |
+| `WHERE` | Selection ($\sigma$) |
+| `JOIN` | Join ($\Join$) |
+| `UNION` | Union ($\cup$) |
+| `EXCEPT` | Difference ($-$) |
+| `CROSS JOIN` | Cartesian Product ($\times$) |
+
+### 10.6. Supporting Tools
+* **[RelaX](https://dbis-uibk.github.io/relax/landing):** An indispensable online simulator developed by the **University of Innsbruck** for testing relational algebra logic and graphically visualizing the query execution tree. It is a powerful tool to bridge the gap between formal theory and practical SQL.
+
+#### **Practical Analysis in RelaX:**
+To demonstrate the concepts, I used the simulator to analyze the behavior of a query involving multiple tables:
+
+**Figure 1: The SQL Input** 
+![SQL Command Interface](query_command.png)  
+*The original SQL query designed to retrieve data from the e-commerce database.*
+
+**Figure 2: Formal Relational Algebra Translation** 
+
+![Relational Algebra Translation](algebra_output.png)  
+*The SQL command translated into formal algebraic symbols ($\sigma, \pi, \Join$), showing the mathematical logic of the operation.*
+
+**Figure 3: Execution Tree and NULL Value Identification** ![Query Tree and Nulls](tree_analisys.png)  
+*The execution tree visualizes the data flow. Here, we can observe the "Lost Record" phenomenon (row count changes) and the appearance of NULL values when records from the left table find no match.*
+
+
+---
+
+*"He who loves practice without theory is like the sailor who boards ship without a rudder and compass and never knows where he may cast anchor."* — **Leonardo da Vinci**
