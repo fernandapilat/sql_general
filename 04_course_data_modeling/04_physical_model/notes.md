@@ -125,6 +125,8 @@ CREATE TABLE customers (
 -- Performance Optimization
 CREATE INDEX idx_customer_name ON customers (name);
 
+```
+
 ---
 
 ## 7. Crow's Foot Notation Cheat Sheet
